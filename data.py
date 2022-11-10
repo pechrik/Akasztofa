@@ -1,13 +1,15 @@
 file = 'words.csv'
 
+#Feladványok adatai
 szavak = []
 temakorok = []
 tippek = []
 
-def Betoltes():
-    with open(file,'r',encoding='utf-8') as forras:
+#Beolvassa a feladványokat és azok egyéb adatait
+def BeolvasasSzavak():
+    with open('words.csv', 'r', encoding='utf-8') as forras:
         for row in forras:
-            splitted = row.split(';')
-
-def Mentes():
-    pass
+            halmaz = row.split(';')
+            szavak.append(halmaz[0])
+            temakorok.append(halmaz[1])
+            tippek.append(halmaz[2].strip())
