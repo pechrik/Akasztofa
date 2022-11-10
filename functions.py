@@ -23,55 +23,53 @@ def Kilepes():
 
 def UjJatek():
     system('cls')
+    win = ''
     hiba = 0
     jelenlegiszo = random.randint(0,len(szavak)+1)
     kitalalt = []
     allapot = False
-    while allapot != True:
-        if len(kitalalt) == len(szavak[jelenlegiszo]):
-            print('Gratulálok, győztél!')
-            input()
-            helyesvalasz = True
+    helyesvalasz = False
+    while helyesvalasz != True:
         system('cls')
-        print(szavak[jelenlegiszo])
         print(f'Témakör: {temakorok[jelenlegiszo]}')
-        helyesvalasz = False
-        while helyesvalasz != True:
-            Szo(kitalalt, szavak[jelenlegiszo])
-            Hangman(hiba)
-            Betuk()
-            valasztottbetu = input('Válassz egy betűt')
-            if valasztottbetu in str(szamok):
-                print('Hibás válasz')
-                time.sleep(1.5)
-                system('cls')
+        print(szavak[jelenlegiszo])
+        Szo(kitalalt, szavak[jelenlegiszo], win)
+        Hangman(hiba)
+        Betuk()
+        valasztottbetu = input('Válassz egy betűt: ').lower()
+        if valasztottbetu not in betuk:
+            system('cls')
+            print('Olyan betűt adjon meg, amit még nem használt fel!')
+            time.sleep(1.5)
+            system('cls')
+        else:
+            if not valasztottbetu in szavak[jelenlegiszo].lower():
+                hiba = hiba + 1
+                print(f'A(z) "{valasztottbetu}" betű nincs a szóban.')
             else:
-                if not valasztottbetu in szavak[jelenlegiszo]:
-                    hiba = hiba + 1
-                    print(f'A {valasztottbetu} betű nincs a szóban.')
-                else:
-                    for i,betu in enumerate(szavak[jelenlegiszo]):
-                        if betu == valasztottbetu:
-                            kitalalt.append(i)
-                    print(f'A {valasztottbetu} betű megtalálható a szóban.')
+                for i,betu in enumerate(szavak[jelenlegiszo]):
+                    if betu == valasztottbetu:
+                        kitalalt.append(i)
+                print(f'A(z) "{valasztottbetu}" betű megtalálható a szóban.')
 
 
-def Szo(kiirando, jelenlegiszo):
+def Szo(kiirando, jelenlegiszo,kiszervezés):
     listaszo = []
     for betu in jelenlegiszo:
-        listaszo.append(betu)
+        listaszo.append(betu.lower())
     for i, betu in enumerate(jelenlegiszo):
         if not i in kiirando:
             listaszo[i] = '_'
     vegleges = "".join(listaszo)
     print(vegleges)
+    kiszervezés = vegleges
 
 def Betuk():
     pass
 
 def Hangman(hiba):
     if hiba == 0:
-        print('\n\n\n\n\n\n\n')
+        print('\n\n\n\n\n\n\n\n')
     if nehezseg == 1:
         if hiba == 1:
             print('       \n       \n       \n       \n       \n       \n=========\n')
