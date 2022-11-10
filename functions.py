@@ -153,30 +153,75 @@ def Nehezseg():
             nehezszoval = 'Közepes'
         if nehezseg == 3:
             nehezszoval = 'Nehéz'
-        print(f'A játék nehézségének módosítása\n\nKönnyű\t10 próbálkozás \t(1)\nKözepes\t5 próbálkozás\t(2)\nNehéz\t3 próbálkozás\t(3)\nJelenlegi nehézség:{nehezszoval}\n')
+        print(f'A játék nehézségének módosítása\nJelenlegi nehézség:{nehezszoval}\n\nKönnyű\t10 próbálkozás \t(1)\nKözepes\t5 próbálkozás\t(2)\nNehéz\t3 próbálkozás\t(3)\n')
         valasz = input(f'Válasz:')
         if valasz == '1':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Könnyű')
             time.sleep(1.5)
-            return int(valasz)
+            return valasz
         elif valasz == '2':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Közepes')
             time.sleep(1.5)
-            return int(valasz)
+            return valasz
         elif valasz == '3':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Nehéz')
             time.sleep(1.5)
-            return int(valasz)
+            return valasz
         else:
             system('cls')
             print('Hibás válasz')
             time.sleep(1.5)
 
 def Szavak():
-    pass
+    system('cls')
+    valasz = ''
+    while valasz != '1' or '2' or '3':
+        print('Szavak kilistázása\t(1)\nSzó törlése\t(2)\nSzó hozzáadása\t(2)\n')
+        valasz = input('Válasz: ')
+        if valasz == '1':
+            Osszesszo()
+        elif valasz == '2':
+            Szotorles()
+        elif valasz == '3':
+            Szohozzaad()
+        else:
+            system('cls')
+            print('Hibás válasz')
+            time.sleep(1.5)
+
+def Szotorles():
+    valasz = False
+    while valasz != True:
+        system('cls')
+        bekertszo = input('Adja meg a törölni kívánt szót: ')
+        if not bekertszo.lower() in szavak:
+            print('Ilyen szó nem létezik.')
+            time.sleep(1.5)
+        else:
+            for i,szo in enumerate(szavak):
+                if bekertszo.lower() == szo:
+                    szavak.pop(i)
+                    temakorok.pop(i)
+                    tippek.pop(i)
+            print(f'\nA(z) {bekertszo.capitalize()} törölve.')
+            valasz = True
+            time.sleep(1.5)
+
+
+def Osszesszo():
+    system('cls')
+    for szo in szavak:
+        print('\t',szo.capitalize())
+    input('\nA továbblépéshez nyomja meg az ENTER billlenytűt!')
+
+def Szohozzaad():
+    system('cls')
+    szavak.append(input('Adjon meg egy szót: ').lower())
+    temakorok.append(input('Adja meg a szó témakörét: ').capitalize())
+    tippek.append(input('Adjon a szóhoz tippet: ').capitalize())

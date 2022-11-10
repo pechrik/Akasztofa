@@ -19,4 +19,4 @@ while valasz != '0':
 
     #Szavak Módosítása
     elif valasz == '3':
-        pass
+        Szavak()
