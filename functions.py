@@ -26,13 +26,18 @@ def UjJatek():
     hiba = 0
     jelenlegiszo = random.randint(0,len(szavak)+1)
     kitalalt = []
-
     allapot = False
     while allapot != True:
+        if len(kitalalt) == len(szavak[jelenlegiszo]):
+            print('Gratulálok, győztél!')
+            input()
+            helyesvalasz = True
+        system('cls')
+        print(szavak[jelenlegiszo])
         print(f'Témakör: {temakorok[jelenlegiszo]}')
-        Szo(kitalalt, szavak[jelenlegiszo])
         helyesvalasz = False
         while helyesvalasz != True:
+            Szo(kitalalt, szavak[jelenlegiszo])
             Hangman(hiba)
             Betuk()
             valasztottbetu = input('Válassz egy betűt')
@@ -41,15 +46,14 @@ def UjJatek():
                 time.sleep(1.5)
                 system('cls')
             else:
-                win = True
-                for i,betu in enumerate(szavak[jelenlegiszo]):
-                    if valasztottbetu == betu:
-                        kitalalt.append(i)
-                        print(f'A {valasztottbetu} bennevan a szóban')
-                    else:
-                        win = False
-                        hiba = hiba + 1
-                        print(f'A {valasztottbetu} betű nincs a szóban')
+                if not valasztottbetu in szavak[jelenlegiszo]:
+                    hiba = hiba + 1
+                    print(f'A {valasztottbetu} betű nincs a szóban.')
+                else:
+                    for i,betu in enumerate(szavak[jelenlegiszo]):
+                        if betu == valasztottbetu:
+                            kitalalt.append(i)
+                    print(f'A {valasztottbetu} betű megtalálható a szóban.')
 
 
 def Szo(kiirando, jelenlegiszo):
@@ -66,6 +70,8 @@ def Betuk():
     pass
 
 def Hangman(hiba):
+    if hiba == 0:
+        print('\n\n\n\n\n\n\n')
     if nehezseg == 1:
         if hiba == 1:
             print('       \n       \n       \n       \n       \n       \n=========\n')
