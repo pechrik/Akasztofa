@@ -5,4 +5,4 @@ data.py         A mentésért és a betöltésért felelős
 functions.py    A játékelemek működéssért felel
 main.py         A program összes funkcióját egyesíti
 playerdata.csv  A játkos adatai tárolja
-words.csv       a feladványokat tárolja  
+words.csv       a feladványokat tárolja    
