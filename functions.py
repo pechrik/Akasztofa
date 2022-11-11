@@ -3,11 +3,32 @@ from os import system
 import time
 import random
 
+#Fejléc
+def Alcím():
+                #     '<--- Menü ---------->
+                #     'Érmék:xx
+    if nehezseg == 1:
+        nehezszoval = '              Könnyű'
+    if nehezseg == 2:
+        nehezszoval = '             Közepes'
+    if nehezseg == 3:
+        nehezszoval = '               Neház'
+    return nehezszoval
+
+def Alcím2():
+    if érmék < 10:
+        alcím2 = f'Érmék:0{str(érmék)}{Alcím()}'
+    else:
+        alcím2 = f'Érmék:{str(érmék)}{Alcím()}'
+    return alcím2
+
 def menu():
+    # menucim = menuszo.
     system('cls')
-    print(f'Menü\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\n')
+    print(f'{BOLDstart}<---------- Menü ---------->\n{Alcím2()}{BOLDend}\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\n')
     valasz = input(f'Válasz: ')
     return valasz
+
 
 def Kilepes():
     system('cls')
@@ -66,6 +87,7 @@ def UjJatek():
             system('cls')
             print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n\n+1 érme\n\n\n')
             helyesvalasz = True
+            ermek = ermek + 1
             input('A továbblépéshez nyomja meg az ENTER gombot!')
 
         #vesztés ellenőrzés
