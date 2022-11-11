@@ -5,7 +5,6 @@ import random
 
 def menu():
     system('cls')
-    print(nehezseg)
     print(f'Menü\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\n')
     valasz = input(f'Válasz: ')
     return valasz
@@ -179,12 +178,14 @@ def Nehezseg():
             time.sleep(1.5)
 
 def Szavak():
-    system('cls')
     valasz = ''
-    while valasz != '1' or '2' or '3':
-        print('Szavak kilistázása\t(1)\nSzó törlése\t(2)\nSzó hozzáadása\t(2)\n')
+    while valasz != '0':
+        system('cls')
+        print('Vissza a főmenübe\t(0)\nSzavak kilistázása\t(1)\nSzó törlése\t\t(2)\nSzó hozzáadása\t\t(3)\n')
         valasz = input('Válasz: ')
-        if valasz == '1':
+        if valasz == '0':
+            Kilepes()
+        elif valasz == '1':
             Osszesszo()
         elif valasz == '2':
             Szotorles()
@@ -223,5 +224,5 @@ def Osszesszo():
 def Szohozzaad():
     system('cls')
     szavak.append(input('Adjon meg egy szót: ').lower())
-    temakorok.append(input('Adja meg a szó témakörét: ').capitalize())
+    temakorok.append(input('Adja meg a szó témakörét: ').lower())
     tippek.append(input('Adjon a szóhoz tippet: ').capitalize())
