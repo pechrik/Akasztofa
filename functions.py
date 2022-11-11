@@ -60,11 +60,11 @@ def UjJatek():
         print(f'Témakör: {temakorok[jelenlegiszo]}')
         Szo(kitalalt, szavak[jelenlegiszo])
         Hangman(hiba)
-        Betuk()
+        Betuk(elerhetobetuk)
 
         #Ellenőrzés
         valasztottbetu = input('Válassz egy betűt: ').lower()
-        if valasztottbetu not in betuk:
+        if valasztottbetu not in elerhetobetuk:
             system('cls')
             print('Olyan betűt adjon meg, amit még nem használt fel!')
             time.sleep(1.5)
@@ -72,15 +72,20 @@ def UjJatek():
         else:
             if not valasztottbetu in szavak[jelenlegiszo].lower():
                 hiba = hiba + 1
+                for i,egybetu in enumerate(elerhetobetuk):
+                            if valasztottbetu == egybetu:
+                                elerhetobetuk.pop(i)
                 print(f'A(z) "{valasztottbetu}" betű nincs a szóban.')
+                time.sleep(1)
             else:
                 for i,betu in enumerate(szavak[jelenlegiszo]):
                     if betu == valasztottbetu:
                         kitalalt.append(i)
-                        for i,egybetu in enumerate(betuk):
+                        for i,egybetu in enumerate(elerhetobetuk):
                             if valasztottbetu == egybetu:
-                                betuk.pop(i)
+                                elerhetobetuk.pop(i)
                 print(f'A(z) "{valasztottbetu}" betű megtalálható a szóban.')
+                time.sleep(1)
 
         #nyerés ellenőrzés
         if len(kitalalt) == len(szavak[jelenlegiszo]):
@@ -118,8 +123,13 @@ def Szo(kiirando, jelenlegiszo):
     vegleges = "".join(listaszo)
     print(vegleges.capitalize())
 
-def Betuk():
-    pass
+def Betuk(elerhetobetuk):
+    text = ''
+    for betu in elerhetobetuk:
+        text = text + f' {betu}'
+    print(f'Elérhető betűk:{text.upper()}')
+
+
 
 def Hangman(hiba):
     if hiba == 0:
@@ -248,3 +258,6 @@ def Szohozzaad():
     szavak.append(input('Adjon meg egy szót: ').lower())
     temakorok.append(input('Adja meg a szó témakörét: ').lower())
     tippek.append(input('Adjon a szóhoz tippet: ').capitalize())
+
+def Segitseg():
+    pass
