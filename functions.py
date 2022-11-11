@@ -112,6 +112,45 @@ def UjJatek():
             helyesvalasz = True
             input('A továbblépéshez nyomja meg az ENTER gombot!')
 
+        #Segítség felajánlása
+        tipp = False
+        if nehezseg == 1:
+            if hiba == 9:
+                tipp = True
+        if nehezseg == 2:
+            if hiba == 4:
+                tipp = True
+        if nehezseg == 3:
+            if hiba == 2:
+                tipp = True
+        if tipp == True:
+            choice = False
+            while choice != True:
+                system('cls')
+                print('Már csak egy próbálkozása maradt.\nSzeretne segíséget kérni?')
+                if érmék < 10:
+                    alcím3 = f'Érmék:0{str(érmék)}'
+                else:
+                    alcím3 = f'Érmék:{str(érmék)}'
+                print('\nNem kérek segítséget\t\t(0)')
+                print('Egy betű megadása\t1 érme\t(1)')
+                print('Szó definíciója\t\t5 érme\t(2)')
+                print(f'{BOLDstart}{alcím3}{BOLDend}')
+                choice = input('\nVálasz:')
+                if choice == '0':
+                    Kilepes()
+                    choice = True
+                elif choice == '1':
+                    input('ddawd')
+                elif choice == '2':
+                    input('wraaa')
+                    choice = True
+                else:
+                    print('Hibás válasz')
+                    choice = False
+                    time.sleep(1.5)
+
+
 
 def Szo(kiirando, jelenlegiszo):
     listaszo = []
