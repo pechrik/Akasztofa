@@ -29,7 +29,6 @@ def menu():
     valasz = input(f'Válasz: ')
     return valasz
 
-
 def Kilepes():
     system('cls')
     print('Kilépés.')
@@ -141,7 +140,15 @@ def UjJatek():
                     Kilepes()
                     choice = True
                 elif choice == '1':
-                    input('ddawd')
+                    system('cls')
+                    segitobetu = ''
+                    while segitobetu in kitalalt:
+                        szo = szavak[jelenlegiszo]
+                        segitobetu = szo[random.randint(0,len(szavak[jelenlegiszo])-1)]
+                        print('a')
+                    print(f'A következő betű szerepel a szóban: "{segitobetu}"')
+                    time.sleep(2)
+                    choice = True
                 elif choice == '2':
                     input('wraaa')
                     choice = True
@@ -149,8 +156,6 @@ def UjJatek():
                     print('Hibás válasz')
                     choice = False
                     time.sleep(1.5)
-
-
 
 def Szo(kiirando, jelenlegiszo):
     listaszo = []
@@ -167,8 +172,6 @@ def Betuk(elerhetobetuk):
     for betu in elerhetobetuk:
         text = text + f' {betu}'
     print(f'Elérhető betűk:{text.upper()}')
-
-
 
 def Hangman(hiba):
     if hiba == 0:
@@ -230,19 +233,19 @@ def Nehezseg():
             loop = True
             print('Nehézség beállítva a következőre: Könnyű')
             time.sleep(1.5)
-            return valasz
+            return int(valasz)
         elif valasz == '2':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Közepes')
             time.sleep(1.5)
-            return valasz
+            return int(valasz)
         elif valasz == '3':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Nehéz')
             time.sleep(1.5)
-            return valasz
+            return int(valasz)
         else:
             system('cls')
             print('Hibás válasz')
@@ -284,7 +287,6 @@ def Szotorles():
             print(f'\nA(z) {bekertszo.capitalize()} törölve.')
             valasz = True
             time.sleep(1.5)
-
 
 def Osszesszo():
     system('cls')

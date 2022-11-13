@@ -1,0 +1,5 @@
+nehézség állítása
+új játéknál nem termelődnek újra a betűk
+a segítség az utolsó előtti próbán is megjelenik
+Témakör kisbetűs
+érmék hozzáadása közben (nyerés esetén) összeszarja magát a rendszer : (
