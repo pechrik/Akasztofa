@@ -1,4 +1,3 @@
 új játéknál nem termelődnek újra a betűk
 
-player adatai mentése
 statisztikák

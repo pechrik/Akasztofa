@@ -41,14 +41,14 @@ def BolvasasStat():
             for i,row in enumerate(forras):
                 halmaz = row.strip().split(';')
                 if i == 0:
-                    megnyert.append(halmaz[0])
-                    elvesztett.append(halmaz[1])
+                    megnyert.append(int(halmaz[0]))
+                    elvesztett.append(int(halmaz[1]))
                 if i == 1:
-                    megnyert.append(halmaz[0])
-                    elvesztett.append(halmaz[1])
+                    megnyert.append(int(halmaz[0]))
+                    elvesztett.append(int(halmaz[1]))
                 if i == 2:
-                    megnyert.append(halmaz[0])
-                    elvesztett.append(halmaz[1])
+                    megnyert.append(int(halmaz[0]))
+                    elvesztett.append(int(halmaz[1]))
 
 def MentesStat():
     with open('playerdata.csv','w',encoding='utf-8')as cel:
@@ -175,32 +175,41 @@ def UjJatek():
         #nyerés ellenőrzés
         if len(kitalalt) == len(szavak[jelenlegiszo]):
             system('cls')
-            print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n\n+1 érme\n\n\n')
+            print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n')
             helyesvalasz = True
             if nehezseg == 1:
                 érmék = érmék + 1
+                megnyert[0] += 1
+                print('+1 érme\n\n\n')
             if nehezseg == 2:
                 érmék = érmék + 3
+                megnyert[1] += 1
+                print('+3 érme\n\n\n')
             if nehezseg == 3:
-                érmék = érmék +1
-            input('A továbblépéshez nyomja meg az ENTER gombot!')
+                érmék = érmék +5
+                megnyert[2] += 1
+                print('+4 érme\n\n\n')
+            time.sleep(2.2)
 
         #vesztés ellenőrzés
         if nehezseg == 1:
             if hiba > 9:
                 lose = True
+                elvesztett[0] += 1
         if nehezseg == 2:
             if hiba > 4:
                 lose = True
+                elvesztett[1] += 1
         if nehezseg == 3:
             if hiba > 2:
                 lose = True
+                elvesztett[2] += 1
         if lose == True:
             system('cls')
             print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nVesztettél\n')
             print('  _____\n  |   |\n  O   |\n /|\  |\n / \  |\n      |\n=========\n\n')
             helyesvalasz = True
-            input('A továbblépéshez nyomja meg az ENTER gombot!')
+            time.sleep(2.2)
 
 def Szo(kiirando, jelenlegiszo):
     listaszo = []
@@ -390,4 +399,23 @@ def Segitseg(jelenlegiszo, elerhetobetuk):
             time.sleep(1.5)
 
 def Statisztikak():
-    pass
+    system('cls')
+    osszeg = []
+    szazalek = []
+    for i in range(3):
+        osszeg.append(int(megnyert[i]) + int(elvesztett[i]))
+        if osszeg[i] == 0:
+            szazalek.append(0)
+        else:
+            szazalek.append(int(megnyert[i])/(osszeg[i]/100))
+    if sum(osszeg) == 0:
+        osszszazalek = 0
+    else:
+        osszegszazalek = sum(megnyert)/(sum(osszeg)/100)
+
+    print(f'{BOLDstart}Nehézség      Megnyert      Elvesztett      Nyerési Arány      Összes lejátszott{BOLDend}')
+    print(f'Könnyű\t\t {megnyert[0]}\t\t{elvesztett[0]}\t\t{round(szazalek[0])}%\t\t\t{osszeg[0]}')
+    print(f'Közepes\t\t {megnyert[1]}\t\t{elvesztett[1]}\t\t{round(szazalek[1])}%\t\t\t{osszeg[1]}')
+    print(f'Nehéz\t\t {megnyert[2]}\t\t{elvesztett[2]}\t\t{round(szazalek[2])}%\t\t\t{osszeg[2]}')
+    print(f'Összes\t\t {sum(megnyert)}\t\t{sum(elvesztett)}\t\t{round(osszegszazalek)}%\t\t\t{sum(osszeg)}')
+    input('\nA továbblépéshez nyomja meg az "ENTER"-t')
