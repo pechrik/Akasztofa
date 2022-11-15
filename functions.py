@@ -68,8 +68,9 @@ def UjJatek():
         #Segítség felajánlása
         if valasztottbetu.lower() in segedszavak:
             segitseg = Segitseg(jelenlegiszo,elerhetobetuk)
-            print(segitseg)
-            input('dadwad')
+            if not segitseg == None: 
+                valasztottbetu = segitseg
+                system('cls')
         #Ellenőrzés
         if valasztottbetu.lower() not in elerhetobetuk:
             if valasztottbetu.lower() not in segedszavak:
@@ -265,6 +266,7 @@ def Szohozzaad():
     tippek.append(input('Adjon a szóhoz tippet: ').capitalize())
 
 def Segitseg(jelenlegiszo, elerhetobetuk):
+    global érmék
     halmaz1 = set(szavak[jelenlegiszo])
     halmaz2 = set(elerhetobetuk)
     metszet = halmaz1 & halmaz2
@@ -281,14 +283,26 @@ def Segitseg(jelenlegiszo, elerhetobetuk):
         if valasz == '0':
             Kilepes()
             valasztas = True
-        if valasz == '1':
-            valasztas = True
-            return list(metszet)[random.randint(0,len(list(metszet))-1)]
+        elif valasz == '1':
+            if érmék < 1:
+                system('cls')
+                print('Nincs elegendő érméd.')
+                time.sleep(1.5)
+            else:
+                valasztas = True
+                érmék = érmék -1
+                return list(metszet)[random.randint(0,len(list(metszet))-1)]
         elif valasz == '2':
-            system('cls')
-            print(f'{tippek[jelenlegiszo]}')
-            time.sleep(3)
-            valasztas = True
+            if érmék < 5:
+                system('cls')
+                print('Nincs elegendő érméd.')
+                time.sleep(1.5)
+            else:
+                system('cls')
+                print(f'{tippek[jelenlegiszo]}')
+                time.sleep(3)
+                érmék = érmék -5
+                valasztas = True
         else:
             system('cls')
             print('Hibás válasz!')
