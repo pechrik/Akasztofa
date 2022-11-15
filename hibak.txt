@@ -1,3 +1,1 @@
 új játéknál nem termelődnek újra a betűk
-
-szóközök kezelése

@@ -103,7 +103,7 @@ def UjJatek():
     elerhetobetuk = betuk
     hiba = 0
     jelenlegiszo = random.randint(0,len(szavak)-1)
-    kitalalt = []
+    kitalalt = [' ',]
     helyesvalasz = False
 
     #játéloop
@@ -216,7 +216,8 @@ def Szo(kiirando, jelenlegiszo):
         listaszo.append(betu)
     for i, betu in enumerate(jelenlegiszo):
         if not i in kiirando:
-            listaszo[i] = '_'
+            if not betu == ' ':
+                listaszo[i] = '_'
     vegleges = "".join(listaszo)
     print(vegleges.capitalize())
 
