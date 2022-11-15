@@ -11,11 +11,11 @@ while valasz != '0':
 
     #Új játék
     elif valasz == '1':
-        UjJatek()
+        UjJatek(érmék)
 
     #Nehézség
     elif valasz == '2':
-        nehezseg = Nehezseg()
+        Nehezseg()
 
     #Szavak Módosítása
     elif valasz == '3':

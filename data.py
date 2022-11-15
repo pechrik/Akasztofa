@@ -11,8 +11,6 @@ temakorok = []
 tippek = []
 nehezseg = 1
 
-érmék = 1
-
 #Beolvassa a feladványokat és azok egyéb adatait
 def BeolvasasSzavak():
     with open('words.csv', 'r', encoding='utf-8') as forras:

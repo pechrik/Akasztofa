@@ -2,6 +2,7 @@ from data import *
 from os import system
 import time
 import random
+érmék = 1
 
 #Fejléc
 def Alcím():
@@ -23,6 +24,7 @@ def Alcím2():
 def menu():
     system('cls')
     print(f'{BOLDstart}<---------- Menü ---------->\n{Alcím2()}{BOLDend}\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\n')
+    print(nehezseg)
     valasz = input(f'Válasz: ')
     return valasz
 
@@ -38,7 +40,7 @@ def Kilepes():
     time.sleep(0.5)
     system('cls')
 
-def UjJatek():
+def UjJatek(érmék):
     system('cls')
     #konstansok
     lose = False
@@ -128,7 +130,7 @@ def UjJatek():
             system('cls')
             print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n\n+1 érme\n\n\n')
             helyesvalasz = True
-            ermek = ermek + 1
+            érmék += 1
             input('A továbblépéshez nyomja meg az ENTER gombot!')
 
         #vesztés ellenőrzés
@@ -209,6 +211,7 @@ def Hangman(hiba):
 
 def Nehezseg():
     loop = False
+    global nehezseg
     while loop != True:
         system('cls')
         if nehezseg == 1:
@@ -224,19 +227,19 @@ def Nehezseg():
             loop = True
             print('Nehézség beállítva a következőre: Könnyű')
             time.sleep(1.5)
-            return int(valasz)
+            nehezseg = int(valasz)
         elif valasz == '2':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Közepes')
             time.sleep(1.5)
-            return int(valasz)
+            nehezseg = int(valasz)
         elif valasz == '3':
             system('cls')
             loop = True
             print('Nehézség beállítva a következőre: Nehéz')
             time.sleep(1.5)
-            return int(valasz)
+            nehezseg = int(valasz)
         else:
             system('cls')
             print('Hibás válasz')
