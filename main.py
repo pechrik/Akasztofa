@@ -22,5 +22,9 @@ while valasz != '0':
         Szavak()
     elif valasz == '4':
         Statisztikak()
+    else:
+        system('cls')
+        print('Hibás válasz!')
+        time.sleep(1.5)
     MentesStat()
     MentesSzavak()
