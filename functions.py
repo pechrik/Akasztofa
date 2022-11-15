@@ -97,10 +97,9 @@ def UjJatek():
     global elvesztett
     global megnyert
     global érmék
-    global betuk
     segedszavak = ['segitseg' , 'segítség']
     lose = False
-    elerhetobetuk = betuk
+    elerhetobetuk = ['a' ,'á' ,'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v', 'w', 'x', 'y', 'z',]
     hiba = 0
     jelenlegiszo = random.randint(0,len(szavak)-1)
     kitalalt = [' ',]
