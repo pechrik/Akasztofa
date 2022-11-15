@@ -65,6 +65,27 @@ def UjJatek():
 
         valasztottbetu = input('A kilépéshez írja be "ESC", a segítséghez "SEGÍTSÉG"\nVálassz egy betűt: ').lower()
 
+        #Feladás
+        if valasztottbetu.lower() == 'esc':
+            valasz = False
+            while valasz != True:
+                system('cls')
+                print('Biztos fel szeretné adni? (i/n)')
+                valasztas = input('Válasz: ')
+                if valasztas.lower() == 'i':
+                    valasz = True
+                    if nehezseg == 1:
+                        hiba = 10
+                    if nehezseg == 2:
+                        hiba = 5
+                    if nehezseg == 3:
+                        hiba = 3
+                elif valasztas.lower() == 'n':
+                    valasz = True
+                else:
+                    system('cls')
+                    print('Hibás válasz!')
+                    time.sleep(1.5)
         #Segítség felajánlása
         if valasztottbetu.lower() in segedszavak:
             segitseg = Segitseg(jelenlegiszo,elerhetobetuk)
@@ -74,10 +95,11 @@ def UjJatek():
         #Ellenőrzés
         if valasztottbetu.lower() not in elerhetobetuk:
             if valasztottbetu.lower() not in segedszavak:
-                system('cls')
-                print('Olyan betűt adjon meg, amit még nem használt fel!')
-                time.sleep(1.5)
-                system('cls')
+                if not valasztottbetu.lower() == 'esc':
+                    system('cls')
+                    print('Olyan betűt adjon meg, amit még nem használt fel!')
+                    time.sleep(1.5)
+                    system('cls')
         else:
             if not valasztottbetu in szavak[jelenlegiszo].lower():
                 hiba = hiba + 1
@@ -307,6 +329,9 @@ def Segitseg(jelenlegiszo, elerhetobetuk):
             system('cls')
             print('Hibás válasz!')
             time.sleep(1.5)
+
+def Feladas():
+    pass
 
 def Statisztikak():
     pass
