@@ -1,5 +1,4 @@
 file = 'words.csv'
-betuk = ['a' ,'á' ,'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v', 'w', 'x', 'y', 'z',]
 BOLDstart = "\033[1m"
 BOLDend = "\033[0;0m"
 ITALICstart ='\033[1;3m'
