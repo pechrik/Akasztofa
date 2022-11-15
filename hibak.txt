@@ -4,4 +4,4 @@ cls nem töröl mindent
 hiányos segítség
 hiányos feladás
 statisztikák
-playaer adatai mentése
+player adatai mentése

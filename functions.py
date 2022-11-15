@@ -11,7 +11,7 @@ def Alcím():
     if nehezseg == 2:
         nehezszoval = '             Közepes'
     if nehezseg == 3:
-        nehezszoval = '               Neház'
+        nehezszoval = '               Nehéz'
     return nehezszoval
 
 def Alcím2():
@@ -40,7 +40,8 @@ def Kilepes():
     time.sleep(0.5)
     system('cls')
 
-def UjJatek(érmék):
+def UjJatek():
+    global érmék
     system('cls')
     #konstansok
     lose = False
@@ -130,7 +131,7 @@ def UjJatek(érmék):
             system('cls')
             print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n\n+1 érme\n\n\n')
             helyesvalasz = True
-            érmék += 1
+            érmék = érmék + 1
             input('A továbblépéshez nyomja meg az ENTER gombot!')
 
         #vesztés ellenőrzés

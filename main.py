@@ -11,7 +11,7 @@ while valasz != '0':
 
     #Új játék
     elif valasz == '1':
-        UjJatek(érmék)
+        UjJatek()
 
     #Nehézség
     elif valasz == '2':
