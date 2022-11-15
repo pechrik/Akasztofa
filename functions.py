@@ -58,25 +58,24 @@ def MentesStat():
     megnyert.clear
     elvesztett.clear
 
-def Alcím():
+def Cimsor(hosszusag,cim):
+    kotojel = '-'
     if nehezseg == 1:
         nehezszoval = '              Könnyű'
     if nehezseg == 2:
         nehezszoval = '             Közepes'
     if nehezseg == 3:
         nehezszoval = '               Nehéz'
-    return nehezszoval
-
-def Alcím2():
     if érmék < 10:
-        alcím2 = f'Érmék:0{str(érmék)}{Alcím()}'
-    else:
-        alcím2 = f'Érmék:{str(érmék)}{Alcím()}'
-    return alcím2
+        alcím2 = f'Érmék:0{str(érmék)}{nehezszoval}'
+    if érmék >= 10:
+        alcím2 = f'Érmék:{str(érmék)}{nehezszoval}'
+    return BOLDstart + '<' + hosszusag * kotojel + ' ' + cim + ' ' + hosszusag * kotojel + '>' + '\n' + alcím2 + BOLDend +'\n\n'
 
 def menu():
     system('cls')
-    print(f'{BOLDstart}<---------- Menü ---------->\n{Alcím2()}{BOLDend}\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\nStatisztikák\t\t(4)\n')
+    print(Cimsor(10,'Menü'))
+    print(f'Kilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\nStatisztikák\t\t(4)\n')
     valasz = input(f'Válasz: ')
     return valasz
 
