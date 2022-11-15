@@ -46,7 +46,7 @@ def UjJatek(érmék):
     lose = False
     elerhetobetuk = betuk
     hiba = 0
-    jelenlegiszo = random.randint(0,len(szavak)-1)
+    jelenlegiszo = random.randint(0,len(szavak))
     kitalalt = []
     helyesvalasz = False
 
@@ -60,7 +60,6 @@ def UjJatek(érmék):
         Hangman(hiba)
         Betuk(elerhetobetuk)
 
-        #Ellenőrzés
         valasztottbetu = input('A kilépéshez írja be "ESC", a segítséghez "SEGÍTSÉG"\nVálassz egy betűt: ').lower()
 
         #Segítség felajánlása
@@ -102,6 +101,7 @@ def UjJatek(érmék):
                     choice = False
                     time.sleep(1.5)
 
+        #Ellenőrzés
         if valasztottbetu not in elerhetobetuk:
             system('cls')
             print('Olyan betűt adjon meg, amit még nem használt fel!')

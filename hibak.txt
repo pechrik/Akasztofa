@@ -1,1 +1,7 @@
 új játéknál nem termelődnek újra a betűk
+cls nem töröl mindent
+
+hiányos segítség
+hiányos feladás
+statisztikák
+playaer adatai mentése
