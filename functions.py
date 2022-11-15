@@ -5,8 +5,6 @@ import random
 
 #Fejléc
 def Alcím():
-                #     '<--- Menü ---------->
-                #     'Érmék:xx
     if nehezseg == 1:
         nehezszoval = '              Könnyű'
     if nehezseg == 2:
@@ -23,7 +21,6 @@ def Alcím2():
     return alcím2
 
 def menu():
-    # menucim = menuszo.
     system('cls')
     print(f'{BOLDstart}<---------- Menü ---------->\n{Alcím2()}{BOLDend}\n\nKilépés\t\t\t(0)\nÚj játék\t\t(1)\nNehézség módosítása\t(2)\nSzavak módosítása\t(3)\n')
     valasz = input(f'Válasz: ')
@@ -62,7 +59,47 @@ def UjJatek():
         Betuk(elerhetobetuk)
 
         #Ellenőrzés
-        valasztottbetu = input('Válassz egy betűt: ').lower()
+        valasztottbetu = input('A kilépéshez írja be "ESC", a segítséghez "SEGÍTSÉG"\nVálassz egy betűt: ').lower()
+
+        #Segítség felajánlása
+        tipp= False
+        if valasztottbetu.upper() == 'SEGITSEG' or valasztottbetu.upper() == 'SEGÍTSÉG':
+            tipp = True
+        if tipp == True:
+            choice = False
+            while choice != True:
+                system('cls')
+                print('Már csak egy próbálkozása maradt.\nSzeretne segíséget kérni?')
+                if érmék < 10:
+                    alcím3 = f'Érmék:0{str(érmék)}'
+                else:
+                    alcím3 = f'Érmék:{str(érmék)}'
+                print('\nNem kérek segítséget\t\t(0)')
+                print('Egy betű megadása\t1 érme\t(1)')
+                print('Szó definíciója\t\t5 érme\t(2)')
+                print(f'{BOLDstart}{alcím3}{BOLDend}')
+                choice = input('\nVálasz:')
+                if choice == '0':
+                    Kilepes()
+                    choice = True
+                elif choice == '1':
+                    system('cls')
+                    segitobetu = ''
+                    while segitobetu in kitalalt:
+                        szo = szavak[jelenlegiszo]
+                        segitobetu = szo[random.randint(0,len(szavak[jelenlegiszo])-1)]
+                        print('a')
+                    print(f'A következő betű szerepel a szóban: "{segitobetu}"')
+                    time.sleep(2)
+                    choice = True
+                elif choice == '2':
+                    input('wraaa')
+                    choice = True
+                else:
+                    print('Hibás válasz')
+                    choice = False
+                    time.sleep(1.5)
+
         if valasztottbetu not in elerhetobetuk:
             system('cls')
             print('Olyan betűt adjon meg, amit még nem használt fel!')
@@ -110,52 +147,6 @@ def UjJatek():
             print('  _____\n  |   |\n  O   |\n /|\  |\n / \  |\n      |\n=========\n\n')
             helyesvalasz = True
             input('A továbblépéshez nyomja meg az ENTER gombot!')
-
-        #Segítség felajánlása
-        tipp = False
-        if nehezseg == 1:
-            if hiba == 9:
-                tipp = True
-        if nehezseg == 2:
-            if hiba == 4:
-                tipp = True
-        if nehezseg == 3:
-            if hiba == 2:
-                tipp = True
-        if tipp == True:
-            choice = False
-            while choice != True:
-                system('cls')
-                print('Már csak egy próbálkozása maradt.\nSzeretne segíséget kérni?')
-                if érmék < 10:
-                    alcím3 = f'Érmék:0{str(érmék)}'
-                else:
-                    alcím3 = f'Érmék:{str(érmék)}'
-                print('\nNem kérek segítséget\t\t(0)')
-                print('Egy betű megadása\t1 érme\t(1)')
-                print('Szó definíciója\t\t5 érme\t(2)')
-                print(f'{BOLDstart}{alcím3}{BOLDend}')
-                choice = input('\nVálasz:')
-                if choice == '0':
-                    Kilepes()
-                    choice = True
-                elif choice == '1':
-                    system('cls')
-                    segitobetu = ''
-                    while segitobetu in kitalalt:
-                        szo = szavak[jelenlegiszo]
-                        segitobetu = szo[random.randint(0,len(szavak[jelenlegiszo])-1)]
-                        print('a')
-                    print(f'A következő betű szerepel a szóban: "{segitobetu}"')
-                    time.sleep(2)
-                    choice = True
-                elif choice == '2':
-                    input('wraaa')
-                    choice = True
-                else:
-                    print('Hibás válasz')
-                    choice = False
-                    time.sleep(1.5)
 
 def Szo(kiirando, jelenlegiszo):
     listaszo = []
