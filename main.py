@@ -1,9 +1,9 @@
-from data import *
 from functions import *
 
 valasz = ''
 while valasz != '0':
     BeolvasasSzavak()
+    BolvasasStat()
     valasz = menu()
     #Kilépés
     if valasz == '0':
@@ -20,4 +20,5 @@ while valasz != '0':
     #Szavak Módosítása
     elif valasz == '3':
         Szavak()
+    MentesStat()
     MentesSzavak()

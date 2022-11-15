@@ -1,11 +1,63 @@
-from data import *
 from os import system
 import time
 import random
-érmék = 1
-betuk = ['a' ,'á' ,'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v', 'w', 'x', 'y', 'z',]
 
-#Fejléc
+#Konstansok
+file = 'words.csv'
+BOLDend = "\033[0;0m"
+BOLDstart = "\033[1m"
+betuk = ['a' ,'á' ,'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v', 'w', 'x', 'y', 'z',]
+szavak = []
+temakorok = []
+tippek = []
+nehezseg = 1
+
+érmék = 1
+megnyert = []
+elvesztett = []
+
+def BeolvasasSzavak():
+    with open('words.csv', 'r', encoding='utf-8') as forras:
+        for row in forras:
+            halmaz = row.split(';')
+            szavak.append(halmaz[0])
+            temakorok.append(halmaz[1])
+            tippek.append(halmaz[2].strip())
+
+def MentesSzavak():
+    with open(file, 'w', encoding='utf-8') as cel:
+        for i in range(len(szavak)):
+            cel.write(f'{szavak[i]};{temakorok[i]};{tippek[i]}\n')
+    szavak.clear()
+    temakorok.clear()
+    tippek.clear()
+
+def BolvasasStat():
+    with open('playerdata.csv', 'r', encoding='utf-8') as forras:
+            global érmék
+            global elvesztett
+            global megnyert
+            érmék = int(forras.readline().strip())
+            for i,row in enumerate(forras):
+                halmaz = row.strip().split(';')
+                if i == 0:
+                    megnyert.append(halmaz[0])
+                    elvesztett.append(halmaz[1])
+                if i == 1:
+                    megnyert.append(halmaz[0])
+                    elvesztett.append(halmaz[1])
+                if i == 2:
+                    megnyert.append(halmaz[0])
+                    elvesztett.append(halmaz[1])
+
+def MentesStat():
+    with open('playerdata.csv','w',encoding='utf-8')as cel:
+        cel.write(f'{érmék}\n')
+        for i in range(3):
+            cel.write(f'{megnyert[i]};{elvesztett[i]}\n')
+    megnyert.clear
+    elvesztett.clear
+
 def Alcím():
     if nehezseg == 1:
         nehezszoval = '              Könnyű'
@@ -43,6 +95,8 @@ def Kilepes():
 def UjJatek():
     system('cls')
     #konstansok
+    global elvesztett
+    global megnyert
     global érmék
     global betuk
     segedszavak = ['segitseg' , 'segítség']
@@ -123,7 +177,12 @@ def UjJatek():
             system('cls')
             print(f'A keresett szó: {szavak[jelenlegiszo].capitalize()}\nGratulálok, győztél\n\n+1 érme\n\n\n')
             helyesvalasz = True
-            érmék = érmék + 1
+            if nehezseg == 1:
+                érmék = érmék + 1
+            if nehezseg == 2:
+                érmék = érmék + 3
+            if nehezseg == 3:
+                érmék = érmék +1
             input('A továbblépéshez nyomja meg az ENTER gombot!')
 
         #vesztés ellenőrzés
@@ -329,9 +388,6 @@ def Segitseg(jelenlegiszo, elerhetobetuk):
             system('cls')
             print('Hibás válasz!')
             time.sleep(1.5)
-
-def Feladas():
-    pass
 
 def Statisztikak():
     pass
