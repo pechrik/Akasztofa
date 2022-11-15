@@ -55,7 +55,7 @@ def UjJatek(érmék):
 
         #Játék elemek
         system('cls')
-        print(f'Témakör: {temakorok[jelenlegiszo]}')
+        print(f'Témakör: {temakorok[jelenlegiszo].capitalize()}')
         Szo(kitalalt, szavak[jelenlegiszo])
         Hangman(hiba)
         Betuk(elerhetobetuk)
