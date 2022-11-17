@@ -97,7 +97,7 @@ def UjJatek():
     global elvesztett
     global megnyert
     global érmék
-    segedszavak = ['segitseg' , 'segítség']
+    segedszavak = ['help']
     lose = False
     elerhetobetuk = ['a' ,'á' ,'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v', 'w', 'x', 'y', 'z',]
     hiba = 0
@@ -115,7 +115,7 @@ def UjJatek():
         Hangman(hiba)
         Betuk(elerhetobetuk)
 
-        valasztottbetu = input('A kilépéshez írja be "ESC", a segítséghez "SEGÍTSÉG"\nVálassz egy betűt: ').lower()
+        valasztottbetu = input('A kilépéshez írja be "ESC", a segítséghez "HELP"\nVálassz egy betűt: ').lower()
 
         #Feladás
         if valasztottbetu.lower() == 'esc':
@@ -411,11 +411,9 @@ def Statisztikak():
         osszszazalek = 0
     else:
         osszegszazalek = sum(megnyert)/(sum(osszeg)/100)
-    print(megnyert)
     print(f'{BOLDstart}Nehézség      Megnyert      Elvesztett      Nyerési Arány      Összes lejátszott{BOLDend}')
     print(f'Könnyű\t\t {megnyert[0]}\t\t{elvesztett[0]}\t\t{round(szazalek[0])}%\t\t\t{osszeg[0]}')
     print(f'Közepes\t\t {megnyert[1]}\t\t{elvesztett[1]}\t\t{round(szazalek[1])}%\t\t\t{osszeg[1]}')
     print(f'Nehéz\t\t {megnyert[2]}\t\t{elvesztett[2]}\t\t{round(szazalek[2])}%\t\t\t{osszeg[2]}')
     print(f'Összes\t\t {sum(megnyert)}\t\t{sum(elvesztett)}\t\t{round(osszegszazalek)}%\t\t\t{sum(osszeg)}')
     input('\nA továbblépéshez nyomja meg az "ENTER"-t')
-    
